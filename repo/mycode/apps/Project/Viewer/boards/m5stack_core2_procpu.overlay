@@ -1,0 +1,19 @@
+/ {
+    chosen {
+        zephyr,display = &ili9342c; // Reference the ili9342c label
+    };
+};
+
+&ili9342c {
+    compatible = "ilitek,ili9342c";
+    mipi-max-frequency = <30000000>;
+    reg = <0>;
+    vin-supply = <&lcd_bg>;
+    pixel-format = <ILI9XXX_PIXEL_FORMAT_RGB565>;
+    display-inversion;
+    width = <320>;
+    height = <240>;
+    rotation = <0>;
+    status = "okay"; // Ensure the node is enabled
+};
+

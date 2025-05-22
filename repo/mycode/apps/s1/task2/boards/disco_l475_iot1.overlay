@@ -1,0 +1,38 @@
+/{
+    aliases {
+        datargb = &data_rgb;
+        clkrgb = &clock_rgb;
+        
+    };
+
+    pwmleds: pwmleds {
+		compatible = "pwm-leds";
+		status = "disabled";
+		/*
+		 * green_pwm_1 is connected to CN1 pin 2 not LD1, since LD1
+		 * shares a pin with the Arduino SPI SCL line.
+		 */
+		pwm_1: pwm_1 {
+			pwms = <&pwm2 1 PWM_MSEC(1000) PWM_POLARITY_NORMAL>;
+		};
+		pwm_2: pwm_2 {
+			pwms = <&pwm15 1 PWM_MSEC(1000) PWM_POLARITY_NORMAL>;
+		};
+	};
+
+    gpios {
+        compatible="gpio-leds";
+        status="okay";
+        data_rgb: data_rgb {
+            gpios = <&gpiob 2 GPIO_ACTIVE_HIGH>;
+        };
+        clock_rgb: clock_rgb {
+            gpios = <&gpioa 4 GPIO_ACTIVE_HIGH>;
+        };
+    };
+};
+
+&pwm2 {
+    status = "okay";
+};
+

@@ -1,0 +1,24 @@
+{
+    "files.associations": {
+        "gpio.h": "c",
+        "kernel.h": "c",
+        "random.h": "c",
+        "usb_device.h": "c",
+        "pwm.h": "c",
+        "inttypes.h": "c",
+        "devicetree.h": "c",
+        "regex": "c",
+        "device.h": "c",
+        "task1.h": "c",
+        "chrono": "c",
+        "util.h": "c",
+        "shell.h": "c",
+        "rtc.h": "c",
+        "flash_map.h": "c",
+        "bluetooth.h": "c",
+        "byteorder.h": "c",
+        "log.h": "c",
+        "hci.h": "c",
+        "display.h": "c"
+    }
+}

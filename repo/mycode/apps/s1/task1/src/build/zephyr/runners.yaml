@@ -1,0 +1,39 @@
+# Available runners configured by board.cmake.
+runners:
+- stm32cubeprogrammer
+- openocd
+- jlink
+
+# Default flash runner if --runner is not given.
+flash-runner: stm32cubeprogrammer
+
+# Default debug runner if --runner is not given.
+debug-runner: openocd
+
+# Common runner configuration values.
+config:
+  board_dir: /home/s4803486/csse4011/repo/zephyr/boards/st/disco_l475_iot1
+  # Build outputs:
+  elf_file: zephyr.elf
+  hex_file: zephyr.hex
+  bin_file: zephyr.bin
+  # Host tools:
+  gdb: /home/s4803486/zephyr_install/zephyr-sdk-0.17.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb-py
+  openocd: /home/s4803486/zephyr_install/zephyr-sdk-0.17.0/sysroots/x86_64-pokysdk-linux/usr/bin/openocd
+  openocd_search:
+    - /home/s4803486/zephyr_install/zephyr-sdk-0.17.0/sysroots/x86_64-pokysdk-linux/usr/share/openocd/scripts
+
+# Runner specific arguments
+args:
+  stm32cubeprogrammer:
+    - --port=swd
+    - --reset-mode=hw
+  openocd:
+    - --cmd-load
+    - flash write_image erase
+    - --cmd-verify
+    - verify_image
+  jlink:
+    - --dt-flash=y
+    - --device=STM32L475VG
+    - --speed=4000
